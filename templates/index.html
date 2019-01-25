@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>W3.CSS Template</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+        </style>
+    </head>
+    <body class="w3-theme-l5"> 
+        <div class="w3-container w3-content" style="max-width:1400px;">    
+            <div class="w3-row">
+                <div class="w3-col m3">
+                    <div class="w3-card w3-round w3-white">
+                        <div class="w3-container">
+                            <h4 class="w3-center">{{profile.name}}</h4>
+                            <p class="w3-center"><img src="{{profile.avatar_url}}" class="w3-circle" style="height:106px;width:106px"></p>
+                            <hr>
+                            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{profile.bio}}</p>
+                            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{profile.location}}</p>
+                            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile.created_at}}</p>
+                            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile.company}}</p>
+                            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile.company}}</p>
+                            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile.hireable}}</p>
+                        </div>
+                    </div>  
+                </div>
+                <div class="w3-col m9">
+                    <br>
+                    <div class="w3-bar w3-black">
+                        <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'repos')">Repositories</button>
+                        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'followers')">Followers: {{profile.followers}}</button>
+                        <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'following')">Following: {{profile.following}}</button>
+                    </div> 
+                    <div id="repos"  class="w3-container city" style="padding-left: 0px;">
+                        {% for repo in repos %}    
+                            <a href="{{repo.html_url}}" target="_blank">
+                                <div class="w3-display-container w3-col " style="width:33.3%">
+                                    <img src="https://www.w3schools.com/w3css/img_avatar3.png" class="w3-opacity" style="width:100%">
+                                    <div class="w3-display-middle w3-small">
+                                        <button class="w3-button w3-black">{{repo.description}}</button>
+                                    </div>
+                                    <div class="w3-display-topleft w3-small w3-button w3-black"> 
+                                        Watchers: {{repo.watchers}}<br>
+                                        Star: {{repo.stargazers_count}}<br>
+                                        Fork: {{repo.forks_count}}<br>
+                                        Language: {{repo.language}} 
+                                    </div>
+                                </div> 
+                            </a>
+                        {% endfor %}
+                    </div> 
+                    <div id="followers" class="w3-container w3-border city" style="display:none">
+                        {% for follower in followers %} 
+                            <div class="w3-quarter w3-center">
+                                <img src="{{follower.avatar_url}}" style="width:100%">
+                                <div class="w3-center w3-container">
+                                    <p><a href="{{follower.html_url}}" target="_blank">{{follower.login}}</a></p>
+                                </div>
+                            </div>
+                        {% endfor %} 
+                    </div> 
+                    <div id="following" class="w3-container w3-border city" style="display:none">
+                        {% for following in followings %} 
+                            <div class="w3-quarter w3-center">
+                                <img src="{{following.avatar_url}}" style="width:100%">
+                                <div class="w3-center w3-container">
+                                    <p><a href="{{following.html_url}}" target="_blank">{{following.login}}</a></p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div> 
+            </div>
+        </div> 
+        <br> 
+        <script>
+            function openCity(evt, cityName) {
+                var i, x, tablinks;
+                x = document.getElementsByClassName("city");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablink");
+                for (i = 0; i < x.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " w3-red";
+            }
+        </script>
+    </body>
+</html> 
