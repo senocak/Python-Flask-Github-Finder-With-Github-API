@@ -22,9 +22,16 @@
                             <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{profile.bio}}</p>
                             <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> {{profile.location}}</p>
                             <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile.created_at}}</p>
-                            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile.company}}</p>
-                            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile.company}}</p>
-                            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> {{profile.hireable}}</p>
+                            <p><i class="fa fa-building fa-fw w3-margin-right w3-text-theme"></i> {{profile.company}}</p>
+                            <p><i class="fa fa-link fa-fw w3-margin-right w3-text-theme"></i> {{profile.blog}}</p>
+                            <p>
+                                <i class="fa fa-laptop fa-fw w3-margin-right w3-text-theme"></i>
+                                {% if profile.hireable == False %}
+                                    Not Hireable
+                                {% else %}
+                                    Hireable
+                                {% endif %}
+                            </p>
                         </div>
                     </div>  
                 </div>
