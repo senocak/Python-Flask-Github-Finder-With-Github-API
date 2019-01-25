@@ -13,10 +13,10 @@
         </style>
     </head>
     <body class="w3-theme-l5"> 
-        <div class="w3-container w3-content" style="max-width:1400px;">    
+        <div class="w3-container w3-content" style="max-width:1400px; background-color: black;">    
             <div class="w3-row">
                 <div class="w3-col m3">
-                    <div class="w3-card w3-round w3-white">
+                    <div class="w3-card w3-round w3-black">
                         <div class="w3-container">
                             <h4 class="w3-center">{{profile.name}}</h4>
                             <p class="w3-center"><img src="{{profile.avatar_url}}" class="w3-circle" style="height:106px;width:106px"></p>
@@ -30,8 +30,7 @@
                         </div>
                     </div>  
                 </div>
-                <div class="w3-col m9">
-                    <br>
+                <div class="w3-col m9"> 
                     <div class="w3-bar w3-black">
                         <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'repos')">Repositories</button>
                         <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'followers')">Followers: {{profile.followers}}</button>
@@ -41,9 +40,10 @@
                         {% for repo in repos %}    
                             <a href="{{repo.html_url}}" target="_blank">
                                 <div class="w3-display-container w3-col " style="width:33.3%">
-                                    <img src="https://www.w3schools.com/w3css/img_avatar3.png" class="w3-opacity" style="width:100%">
+                                    <img src="https://image.freepik.com/free-vector/abstract-dark-halftone-background-design_1017-15505.jpg" class="w3-opacity" style="width:100%">
                                     <div class="w3-display-middle w3-small">
-                                        <button class="w3-button w3-black">{{repo.description}}</button>
+                                        <br><br>
+                                        <button class="w3-button w3-black">{{repo.name}}</button>
                                     </div>
                                     <div class="w3-display-topleft w3-small w3-button w3-black"> 
                                         Watchers: {{repo.watchers}}<br>
@@ -55,7 +55,7 @@
                             </a>
                         {% endfor %}
                     </div> 
-                    <div id="followers" class="w3-container w3-border city" style="display:none">
+                    <div id="followers" class="w3-container city" style="display:none">
                         {% for follower in followers %} 
                             <div class="w3-quarter w3-center">
                                 <img src="{{follower.avatar_url}}" style="width:100%">
@@ -65,7 +65,7 @@
                             </div>
                         {% endfor %} 
                     </div> 
-                    <div id="following" class="w3-container w3-border city" style="display:none">
+                    <div id="following" class="w3-container city" style="display:none">
                         {% for following in followings %} 
                             <div class="w3-quarter w3-center">
                                 <img src="{{following.avatar_url}}" style="width:100%">
